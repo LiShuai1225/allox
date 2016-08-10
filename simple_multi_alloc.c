@@ -4,10 +4,6 @@
 
 #include "allox.h"
 
-/* Number of huge page-blocks to allocate. */
-#define HPAGES 42
-#define TOTAL_PAGES (HPAGES * PAGES_PER_HPAGE)
-
 int main(void)
 {
 	int i;
@@ -19,11 +15,7 @@ int main(void)
 		ptrs[i][0] = 'x';
 	}
 
-	printf("Allocated %d pages = %d huge pages = %dMiB (%dKiB).\n",
-		TOTAL_PAGES,
-		HPAGES,
-		(TOTAL_PAGES * PAGE_SIZE)/(1024 * 1024),
-		(TOTAL_PAGES * PAGE_SIZE)/1024);
+	summarise();
 	block();
 
 	/* Not strictly necessary, but good habit to free regardless. */
