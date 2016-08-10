@@ -1,7 +1,6 @@
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 
 #include "allox.h"
 
@@ -9,17 +8,10 @@
 #define HPAGES 42
 #define TOTAL_PAGES (HPAGES * PAGES_PER_HPAGE)
 
-static void say_pid(void)
-{
-	printf("PID = %d\n", getpid());
-}
-
 int main(void)
 {
 	int i;
 	unsigned char *ptrs[TOTAL_PAGES];
-
-	say_pid();
 
 	for (i = 0; i < TOTAL_PAGES; i++) {
 		ptrs[i] = malloc(PAGE_SIZE);
