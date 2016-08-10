@@ -20,7 +20,7 @@ int main(void)
 
 	printf("Allocated %d pages = %d huge pages = %dMiB (%dKiB).\n",
 		TOTAL_PAGES,
-		TOTAL_PAGES/PAGES_PER_HPAGE,
+		HPAGES,
 		(TOTAL_PAGES * PAGE_SIZE)/(1024 * 1024),
 		(TOTAL_PAGES * PAGE_SIZE)/1024);
 	block();
