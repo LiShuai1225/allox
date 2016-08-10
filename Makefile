@@ -6,7 +6,7 @@ all: $(names)
 
 %: %.c
 	$(CC) $(CFLAGS) -g -pedantic -Wall -Werror -o $@ $<
-	valgrind $(PWD)/$@ </dev/null
+	valgrind --leak-check=full $(PWD)/$@ </dev/null
 
 clean:
 	rm -f $(names)
