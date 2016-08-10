@@ -3,20 +3,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define PAGE_SIZE       (4 * 1024)
-#define HPAGE_SIZE      (2 * 1024 * 1024)
-#define PAGES_PER_HPAGE (HPAGE_SIZE/PAGE_SIZE)
+#include "allox.h"
 
 /* Number of huge page-blocks to allocate. */
 #define HPAGES 42
 #define TOTAL_PAGES (HPAGES * PAGES_PER_HPAGE)
-
-/* Wait for input. */
-static void block(void)
-{
-	puts("<hit ret>");
-	getchar();
-}
 
 static void say_pid(void)
 {
