@@ -10,9 +10,8 @@ int main(void)
 	unsigned char *ptr = malloc(HPAGES * HPAGE_SIZE);
 
 	/* Touch each 4KiB page. */
-	for (i = 0; i < TOTAL_PAGES; i++) {
+	for (i = 0; i < TOTAL_PAGES; i++)
 		ptr[i * PAGE_SIZE] = 'x';
-	}
 
 	summarise();
 	block();
