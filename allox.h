@@ -3,12 +3,14 @@
 
 #define PAGE_SHIFT      12
 #define HPAGE_SHIFT     21
-#define PAGE_SIZE       (1<<PAGE_SHIFT)
-#define HPAGE_SIZE      (1<<HPAGE_SHIFT)
+#define PAGE_SIZE       (1UL<<PAGE_SHIFT)
+#define HPAGE_SIZE      (1UL<<HPAGE_SHIFT)
+#define PAGE_MASK       (~(1UL-PAGE_SIZE))
+#define HPAGE_MASK      (~(1UL-HPAGE_SIZE))
 #define PAGES_PER_HPAGE (HPAGE_SIZE/PAGE_SIZE)
 
 /* Number of huge page-blocks to allocate. */
-#define HPAGES 42
+#define HPAGES 42UL
 #define TOTAL_PAGES (HPAGES * PAGES_PER_HPAGE)
 
 /* Wait for input. */
@@ -21,7 +23,7 @@ static inline void block(void)
 /* Summarise allocation. */
 static inline void summarise(void)
 {
-	printf("Allocated %d pages = %d huge pages = %dMiB (%dKiB).\n",
+	printf("Allocated %ld pages = %ld huge pages = %ldMiB (%ldKiB).\n",
 		TOTAL_PAGES,
 		HPAGES,
 		(TOTAL_PAGES * PAGE_SIZE)/(1024 * 1024),
