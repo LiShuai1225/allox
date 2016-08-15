@@ -1,8 +1,10 @@
 #ifndef __ALLOX_GUARD
 #define __ALLOX_GUARD
 
-#define PAGE_SIZE       (4 * 1024)
-#define HPAGE_SIZE      (2 * 1024 * 1024)
+#define PAGE_SHIFT      12
+#define HPAGE_SHIFT     21
+#define PAGE_SIZE       (1<<PAGE_SHIFT)
+#define HPAGE_SIZE      (1<<HPAGE_SHIFT)
 #define PAGES_PER_HPAGE (HPAGE_SIZE/PAGE_SIZE)
 
 /* Number of huge page-blocks to allocate. */
