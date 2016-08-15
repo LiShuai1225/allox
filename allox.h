@@ -5,8 +5,8 @@
 #define HPAGE_SHIFT     21
 #define PAGE_SIZE       (1UL<<PAGE_SHIFT)
 #define HPAGE_SIZE      (1UL<<HPAGE_SHIFT)
-#define PAGE_MASK       (~(1UL-PAGE_SIZE))
-#define HPAGE_MASK      (~(1UL-HPAGE_SIZE))
+#define PAGE_MASK       (~(PAGE_SIZE-1UL))
+#define HPAGE_MASK      (~(HPAGE_SIZE-1UL))
 #define PAGES_PER_HPAGE (HPAGE_SIZE/PAGE_SIZE)
 
 /* Number of huge page-blocks to allocate. */
