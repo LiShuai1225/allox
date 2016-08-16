@@ -21,8 +21,15 @@ static inline void block(void)
 }
 
 /* Summarise allocation. */
-static inline void summarise(void)
+static inline void summarise(void *ptr)
 {
+	unsigned long addr;
+
+	if (ptr) {
+		addr = (unsigned long)ptr&PAGE_MASK;
+		printf("Address = %016lx (lower %d bits = %06lx)\n", addr, HPAGE_SHIFT, addr&(~HPAGE_MASK));
+	}
+
 	printf("Allocated %ld pages = %ld huge pages = %ldMiB (%ldKiB).\n",
 		TOTAL_PAGES,
 		HPAGES,

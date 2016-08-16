@@ -15,7 +15,7 @@ int main(void)
 		ptrs[i][0] = 'x';
 	}
 
-	summarise();
+	summarise(NULL);
 	block();
 
 	/* Not strictly necessary, but good habit to free regardless. */

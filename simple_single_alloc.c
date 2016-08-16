@@ -13,7 +13,7 @@ int main(void)
 	for (i = 0; i < TOTAL_PAGES; i++)
 		ptr[i * PAGE_SIZE] = 'x';
 
-	summarise();
+	summarise(ptr);
 	block();
 
 	/* Not strictly necessary, but good habit to free regardless. */
