@@ -1,6 +1,9 @@
 #ifndef __ALLOX_GUARD
 #define __ALLOX_GUARD
 
+#include <stdio.h>
+#include <stdlib.h>
+
 #define PAGE_SHIFT      12
 #define HPAGE_SHIFT     21
 #define PAGE_SIZE       (1UL<<PAGE_SHIFT)
