@@ -13,10 +13,8 @@ int main(int argc, char *argv[])
 
 	for (i = 0; i < TOTAL_PAGES; i++) {
 		ptrs[i] = malloc(PAGE_SIZE);
-		if (ptrs[i] == NULL) {
-			perror("simple_multi_malloc");
-			exit(1);
-		}
+		if (ptrs[i] == NULL)
+			fatal_perror("simple_multi_malloc: malloc");
 
 		/* Touch page. */
 		ptrs[i][0] = 'x';

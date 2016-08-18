@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 
@@ -45,4 +46,10 @@ void parse_args(int argc, char *argv[])
 
 	if (strcmp(flag, "--suspend") == 0)
 		do_suspend = 1;
+}
+
+void fatal_perror(const char *msg)
+{
+	perror(msg);
+	exit(1);
 }

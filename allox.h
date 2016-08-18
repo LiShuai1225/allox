@@ -17,5 +17,6 @@
 void block(void);
 void summarise(void *ptr);
 void parse_args(int argc, char *argv[]);
+void fatal_perror(const char *msg);
 
 #endif

@@ -12,10 +12,8 @@ int main(int argc, char *argv[])
 	parse_args(argc, argv);
 
 	ptr = malloc(SIZE);
-	if (ptr == NULL) {
-		perror("simple_single_malloc");
-		exit(1);
-	}
+	if (ptr == NULL)
+		fatal_perror("simple_single_malloc: malloc");
 
 	/* Touch each 4KiB page. */
 	for (i = 0; i < TOTAL_PAGES; i++)

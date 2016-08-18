@@ -5,12 +5,6 @@
 
 #include "allox.h"
 
-static void fatal_perror(void)
-{
-	perror("simple_single_mmap");
-	exit(1);
-}
-
 int main(int argc, char *argv[])
 {
 	int i;
@@ -21,7 +15,7 @@ int main(int argc, char *argv[])
 	ptr = mmap(NULL, SIZE, PROT_READ | PROT_WRITE,
 		MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
 	if (ptr == MAP_FAILED)
-		fatal_perror();
+		fatal_perror("simple_single_mmap: mmap");
 
 	/* Touch each 4KiB page. */
 	for (i = 0; i < TOTAL_PAGES; i++)
@@ -31,7 +25,7 @@ int main(int argc, char *argv[])
 	block();
 
 	if (munmap(ptr, SIZE))
-		fatal_perror();
+		fatal_perror("simple_single_mmap: munmap");
 
 	return EXIT_SUCCESS;
 }
