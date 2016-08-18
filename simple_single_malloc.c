@@ -9,6 +9,11 @@ int main(void)
 	int i;
 	unsigned char *ptr = malloc(HPAGES * HPAGE_SIZE);
 
+	if (ptr == NULL) {
+		perror("simple_single_malloc");
+		exit(1);
+	}
+
 	/* Touch each 4KiB page. */
 	for (i = 0; i < TOTAL_PAGES; i++)
 		ptr[i * PAGE_SIZE] = 'x';
