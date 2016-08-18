@@ -11,6 +11,7 @@
 
 #define HPAGES      42UL
 #define TOTAL_PAGES (HPAGES * PAGES_PER_HPAGE)
+#define SIZE        (HPAGES * HPAGE_SIZE)
 
 /* helpers.c */
 void block(void);

@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
 	parse_args(argc, argv);
 
-	ptr = malloc(HPAGES * HPAGE_SIZE);
+	ptr = malloc(SIZE);
 	if (ptr == NULL) {
 		perror("simple_single_malloc");
 		exit(1);
