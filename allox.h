@@ -9,7 +9,6 @@
 #define HPAGE_MASK      (~(HPAGE_SIZE-1UL))
 #define PAGES_PER_HPAGE (HPAGE_SIZE/PAGE_SIZE)
 
-/* Number of huge page-blocks to allocate. */
 #define HPAGES      42UL
 #define TOTAL_PAGES (HPAGES * PAGES_PER_HPAGE)
 
