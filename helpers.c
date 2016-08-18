@@ -1,12 +1,20 @@
 #include <stdio.h>
+#include <string.h>
+#include <unistd.h>
 
 #include "allox.h"
+
+static int do_suspend;
 
 /* Wait for input. */
 void block(void)
 {
-	puts("<hit ret>");
-	getchar();
+	if (do_suspend)
+		pause();
+	else {
+		puts("<hit ret>");
+		getchar();
+	}
 }
 
 /* Summarise allocation. */
@@ -24,4 +32,17 @@ void summarise(void *ptr)
 		HPAGES,
 		(TOTAL_PAGES * PAGE_SIZE)/(1024 * 1024),
 		(TOTAL_PAGES * PAGE_SIZE)/1024);
+}
+
+void parse_args(int argc, char *argv[])
+{
+	char *flag;
+
+	if (argc < 2)
+		return;
+
+	flag = argv[1];
+
+	if (strcmp(flag, "--suspend") == 0)
+		do_suspend = 1;
 }

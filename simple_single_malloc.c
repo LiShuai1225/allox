@@ -4,11 +4,14 @@
 
 #include "allox.h"
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	int i;
-	unsigned char *ptr = malloc(HPAGES * HPAGE_SIZE);
+	unsigned char *ptr;
 
+	parse_args(argc, argv);
+
+	ptr = malloc(HPAGES * HPAGE_SIZE);
 	if (ptr == NULL) {
 		perror("simple_single_malloc");
 		exit(1);

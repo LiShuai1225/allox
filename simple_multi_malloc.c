@@ -4,10 +4,12 @@
 
 #include "allox.h"
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	int i;
 	unsigned char *ptrs[TOTAL_PAGES];
+
+	parse_args(argc, argv);
 
 	for (i = 0; i < TOTAL_PAGES; i++) {
 		ptrs[i] = malloc(PAGE_SIZE);

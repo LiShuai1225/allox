@@ -5,12 +5,15 @@
 
 #include "allox.h"
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	int i;
-	unsigned char *ptr = mmap(NULL, HPAGES * HPAGE_SIZE, PROT_READ | PROT_WRITE,
-				MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+	unsigned char *ptr;
 
+	parse_args(argc, argv);
+
+	ptr = mmap(NULL, HPAGES * HPAGE_SIZE, PROT_READ | PROT_WRITE,
+		MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
 	if (ptr == MAP_FAILED) {
 		perror("simple_single_mmap");
 		exit(1);

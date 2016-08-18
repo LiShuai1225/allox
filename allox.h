@@ -16,5 +16,6 @@
 /* helpers.c */
 void block(void);
 void summarise(void *ptr);
+void parse_args(int argc, char *argv[]);
 
 #endif
