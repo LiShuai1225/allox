@@ -7,19 +7,14 @@
 
 int main(int argc, char *argv[])
 {
-	int i;
 	unsigned char *ptr;
 
 	parse_args(argc, argv);
 
 	ptr = mmap(NULL, SIZE, PROT_READ | PROT_WRITE,
-		MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+		MAP_PRIVATE | MAP_ANONYMOUS | MAP_POPULATE, -1, 0);
 	if (ptr == MAP_FAILED)
 		fatal_perror("simple_single_mmap: mmap");
-
-	/* Touch each 4KiB page. */
-	for (i = 0; i < TOTAL_PAGES; i++)
-		ptr[i * PAGE_SIZE] = 'x';
 
 	summarise(ptr);
 	block();
