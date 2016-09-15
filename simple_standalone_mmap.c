@@ -10,7 +10,7 @@
 int main(void)
 {
 	void *ptr = mmap(NULL, SIZE, PROT_READ | PROT_WRITE,
-		MAP_PRIVATE | MAP_ANONYMOUS | MAP_POPULATE, -1, 0);
+		MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
 	if (ptr == MAP_FAILED) {
 		perror("mmap");
 		exit(1);
