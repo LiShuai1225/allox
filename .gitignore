@@ -1,3 +1,4 @@
 simple_multi_malloc
 simple_single_malloc
 simple_single_mmap
+simple_standalone_mmap
